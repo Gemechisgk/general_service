@@ -1,0 +1,101 @@
+<odoo>
+    <data>
+        <!-- Report Action -->
+        <record id="action_student_report_wizard" model="ir.actions.report">
+            <field name="name">Student Registration Report</field>
+            <field name="model">report.school.report_student_registration_wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">school.report_student_registration_wizard</field>
+            <field name="report_file">school.report_student_registration_wizard</field>
+            <field name="binding_model_id" ref="model_student_student"/>
+            <field name="binding_type">report</field>
+        </record>
+         <!-- Report Action  excel-->
+        <record id="action_student_xlsx_report" model="ir.actions.server">
+            <field name="name">Export Student Report (XLSX)</field>
+            <field name="model_id" ref="model_student_registration_wizard"/>
+            <field name="state">code</field>
+            <field name="code">action = model.print_xlsx_report()</field>
+        </record>
+
+
+        <template id="report_student_registration_wizard">
+            <t t-call="web.html_container">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 class="text-center mb-4">Student Report</h2>
+                        <style>
+                            .student-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-bottom: 20px;
+                            }
+                            .student-table th, .student-table td {
+                            padding: 12px;
+                            border: 1px solid #ddd;
+                            text-align: left;
+                            }
+                            .student-table th {
+                            background-color: #f8f9fa;
+                            font-weight: bold;
+                            }
+                            .student-table tbody tr:nth-child(even) {
+                            background-color: #f9f9f9;
+                            }
+                            .student-table tbody tr:hover {
+                            background-color: #f1f1f1;
+                            }
+                            .subject-list {
+                            list-style-type: none;
+                            padding: 0;
+                            margin: 0;
+                            }
+                            .subject-list li {
+                            margin-bottom: 5px;
+                            }
+                        </style>
+                        <table class="student-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Subjects</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="student">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="student.name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="student.department_id.name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="student.age"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="student.gender"/>
+                                        </td>
+                                        <td>
+                                            <ul class="subject-list">
+                                                <t t-foreach="student.subject_ids" t-as="subject">
+                                                    <li>
+                                                        <t t-esc="subject.name"/>
+                                                    </li>
+                                                </t>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

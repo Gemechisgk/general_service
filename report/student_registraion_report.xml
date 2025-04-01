@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <!-- Report Action -->
+        <record id="action_student_registration_report" model="ir.actions.report">
+            <field name="name">Student Registration Report</field>
+            <field name="model">student.student</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">school.report_student_registration</field>
+            <field name="report_file">school.report_student_registration</field>
+            <field name="binding_model_id" ref="model_student_student"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!-- Report Template -->
+        <template id="report_student_registration">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <div class="page">
+                        <h2>Student Registration Report</h2>
+                        <p><strong>Name:</strong> <span t-esc="doc.name"/></p>
+                        <p><strong>Fees:</strong> <span t-esc="doc.amount"/></p>
+                        <p><strong>Department:</strong> <span t-esc="doc.department_id.name"/></p>
+                        <p><strong>Subjects:</strong>
+                            <ul>
+                                <t t-foreach="doc.subject_ids" t-as="subject">
+                                    <li t-esc="subject.name"/>
+                                </t>
+                            </ul>
+                        </p>
+                        <p><strong>Age:</strong> <span t-esc="doc.age"/></p>
+                        <p><strong>Date of Birth:</strong> <span t-esc="doc.date_of_birth"/></p>
+                        <p><strong>Gender:</strong> <span t-esc="doc.gender"/></p>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+
+
+
+
+<!--time 43-->

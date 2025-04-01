@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_student_student_graph" model="ir.ui.view">
+        <field name="name">student.student.graph</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <graph string="Students Analysis">
+                <field name="name" type="row"/>
+                <field name="age" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_student_student_pivot" model="ir.ui.view">
+        <field name="name">student.student.pivot</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <pivot string="Students Analysis">
+                <field name="name" type="row"/>
+                <field name="age" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

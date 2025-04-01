@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_student,student_student,model_student_student,,1,1,1,1
+access_student_departments,student_departments,model_student_departments,,1,1,1,1
+access_student_subjects,student_subjects,model_student_subjects,,1,1,1,1
+access_student_result,student_result,model_student_result,,1,1,1,1
+access_image_card,simage_card,model_image_card,,1,1,1,1
+access_student_registration_wizard,student_registration_wizard,model_student_registration_wizard,,1,1,1,1

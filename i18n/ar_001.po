@@ -1,0 +1,233 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-27 17:41+0000\n"
+"PO-Revision-Date: 2024-12-27 17:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_departments__address
+msgid "Address"
+msgstr "العنوان"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__age
+msgid "Age"
+msgstr "العمر"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__create_uid
+#: model:ir.model.fields,field_description:school.field_student_departments__create_uid
+#: model:ir.model.fields,field_description:school.field_student_result__create_uid
+#: model:ir.model.fields,field_description:school.field_student_student__create_uid
+#: model:ir.model.fields,field_description:school.field_student_subjects__create_uid
+msgid "Created by"
+msgstr "تم الإنشاء بواسطة"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__create_date
+#: model:ir.model.fields,field_description:school.field_student_departments__create_date
+#: model:ir.model.fields,field_description:school.field_student_result__create_date
+#: model:ir.model.fields,field_description:school.field_student_student__create_date
+#: model:ir.model.fields,field_description:school.field_student_subjects__create_date
+msgid "Created on"
+msgstr "تم الإنشاء في"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__date_of_birth
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: school
+#: model:ir.model,name:school.model_student_departments
+msgid "Department"
+msgstr "القسم"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_departments__name
+#: model:ir.model.fields,field_description:school.field_student_student__department_id
+msgid "Department Name"
+msgstr "اسم القسم"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__display_name
+#: model:ir.model.fields,field_description:school.field_student_departments__display_name
+#: model:ir.model.fields,field_description:school.field_student_result__display_name
+#: model:ir.model.fields,field_description:school.field_student_student__display_name
+#: model:ir.model.fields,field_description:school.field_student_subjects__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__amount
+msgid "Fees"
+msgstr "الرسوم"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__student_student__gender__female
+msgid "Female"
+msgstr "أنثى"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__gender
+msgid "Gender"
+msgstr "الجنس"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__id
+#: model:ir.model.fields,field_description:school.field_student_departments__id
+#: model:ir.model.fields,field_description:school.field_student_result__id
+#: model:ir.model.fields,field_description:school.field_student_student__id
+#: model:ir.model.fields,field_description:school.field_student_subjects__id
+msgid "ID"
+msgstr "معرف"
+
+#. module: school
+#: model:ir.model,name:school.model_image_card
+#: model_terms:ir.ui.view,arch_db:school.view_image_card_form
+#: model_terms:ir.ui.view,arch_db:school.view_image_card_list
+msgid "Image Card"
+msgstr "بطاقة صورة"
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_image_card
+#: model:ir.ui.menu,name:school.menu_image_card
+#: model:ir.ui.menu,name:school.menu_image_card_root
+msgid "Image Cards"
+msgstr "بطاقات الصورة"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__is_student
+msgid "Is Student"
+msgstr "هل هو طالب"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__write_uid
+#: model:ir.model.fields,field_description:school.field_student_departments__write_uid
+#: model:ir.model.fields,field_description:school.field_student_result__write_uid
+#: model:ir.model.fields,field_description:school.field_student_student__write_uid
+#: model:ir.model.fields,field_description:school.field_student_subjects__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__write_date
+#: model:ir.model.fields,field_description:school.field_student_departments__write_date
+#: model:ir.model.fields,field_description:school.field_student_result__write_date
+#: model:ir.model.fields,field_description:school.field_student_student__write_date
+#: model:ir.model.fields,field_description:school.field_student_subjects__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__student_student__gender__male
+msgid "Male"
+msgstr "ذكر"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_result__result
+msgid "Result"
+msgstr "النتيجة"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__result_student_ids
+msgid "Results"
+msgstr "النتائج"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_student_root
+msgid "School"
+msgstr "المدرسة"
+
+#. module: school
+#: model:ir.model,name:school.model_student_student
+#: model:ir.model.fields,field_description:school.field_student_result__student_id
+#: model:res.groups,name:school.group_student
+#: model_terms:ir.ui.view,arch_db:school.view_student_form
+#: model_terms:ir.ui.view,arch_db:school.view_student_list
+#: model_terms:ir.ui.view,arch_db:school.view_student_search
+msgid "Student"
+msgstr "طالب"
+
+#. module: school
+#: model:ir.module.category,name:school.main_student_category
+msgid "Student Access"
+msgstr "وصول الطالب"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__name
+msgid "Student Name"
+msgstr "اسم الطالب"
+
+#. module: school
+#: model:res.groups,name:school.student_registration_group
+msgid "Student Registration"
+msgstr "تسجيل الطالب"
+
+#. module: school
+#: model:ir.model,name:school.model_student_result
+msgid "Student Result"
+msgstr "نتيجة الطالب"
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_student
+#: model:ir.ui.menu,name:school.menu_student
+#: model:ir.ui.menu,name:school.menu_student_student
+msgid "Students"
+msgstr "الطلاب"
+
+#. module: school
+#: model:ir.model,name:school.model_student_subjects
+#: model:ir.model.fields,field_description:school.field_student_result__subject_id
+msgid "Subject"
+msgstr "الموضوع"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_subjects__name
+msgid "Subject Name"
+msgstr "اسم الموضوع"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_student_student__subject_ids
+msgid "Subjects"
+msgstr "المواد"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__name
+msgid "الاسم"
+msgstr "الاسم"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__image
+msgid "الصورة الشخصية"
+msgstr "الصورة الشخصية"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__card_id
+msgid "رقم البطاقة"
+msgstr "رقم البطاقة"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__phone
+msgid "رقم الهاتف"
+msgstr "رقم الهاتف"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__receipt_image
+msgid "صورة الإيصال"
+msgstr "صورة الإيصال"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_image_card__text
+msgid "ملاحظات"
+msgstr "ملاحظات"
