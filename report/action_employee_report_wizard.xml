@@ -1,48 +1,48 @@
 <odoo>
     <data>
         <!-- Report Action -->
-        <record id="action_student_report_wizard" model="ir.actions.report">
-            <field name="name">Student Registration Report</field>
-            <field name="model">report.school.report_student_registration_wizard</field>
+        <record id="action_employee_report_wizard" model="ir.actions.report">
+            <field name="name">Employee Registration Report</field>
+            <field name="model">report.general_service.report_employee_registration_wizard</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">school.report_student_registration_wizard</field>
-            <field name="report_file">school.report_student_registration_wizard</field>
-            <field name="binding_model_id" ref="model_student_student"/>
+            <field name="report_name">general_service.report_employee_registration_wizard</field>
+            <field name="report_file">general_service.report_employee_registration_wizard</field>
+            <field name="binding_model_id" ref="model_employee_employee"/>
             <field name="binding_type">report</field>
         </record>
          <!-- Report Action  excel-->
-        <record id="action_student_xlsx_report" model="ir.actions.server">
-            <field name="name">Export Student Report (XLSX)</field>
-            <field name="model_id" ref="model_student_registration_wizard"/>
+        <record id="action_employee_xlsx_report" model="ir.actions.server">
+            <field name="name">Export Employee Report (XLSX)</field>
+            <field name="model_id" ref="model_employee_registration_wizard"/>
             <field name="state">code</field>
             <field name="code">action = model.print_xlsx_report()</field>
         </record>
 
 
-        <template id="report_student_registration_wizard">
+        <template id="report_employee_registration_wizard">
             <t t-call="web.html_container">
                 <t t-call="web.internal_layout">
                     <div class="page">
-                        <h2 class="text-center mb-4">Student Report</h2>
+                        <h2 class="text-center mb-4">Employee Report</h2>
                         <style>
-                            .student-table {
+                            .employee-table {
                             width: 100%;
                             border-collapse: collapse;
                             margin-bottom: 20px;
                             }
-                            .student-table th, .student-table td {
+                            .employee-table th, .employee-table td {
                             padding: 12px;
                             border: 1px solid #ddd;
                             text-align: left;
                             }
-                            .student-table th {
+                            .employee-table th {
                             background-color: #f8f9fa;
                             font-weight: bold;
                             }
-                            .student-table tbody tr:nth-child(even) {
+                            .employee-table tbody tr:nth-child(even) {
                             background-color: #f9f9f9;
                             }
-                            .student-table tbody tr:hover {
+                            .employee-table tbody tr:hover {
                             background-color: #f1f1f1;
                             }
                             .subject-list {
@@ -54,7 +54,7 @@
                             margin-bottom: 5px;
                             }
                         </style>
-                        <table class="student-table">
+                        <table class="employee-table">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -65,23 +65,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="docs" t-as="student">
+                                <t t-foreach="docs" t-as="employee">
                                     <tr>
                                         <td>
-                                            <t t-esc="student.name"/>
+                                            <t t-esc="employee.name"/>
                                         </td>
                                         <td>
-                                            <t t-esc="student.department_id.name"/>
+                                            <t t-esc="employee.department_id.name"/>
                                         </td>
                                         <td>
-                                            <t t-esc="student.age"/>
+                                            <t t-esc="employee.age"/>
                                         </td>
                                         <td>
-                                            <t t-esc="student.gender"/>
+                                            <t t-esc="employee.gender"/>
                                         </td>
                                         <td>
                                             <ul class="subject-list">
-                                                <t t-foreach="student.subject_ids" t-as="subject">
+                                                <t t-foreach="employee.subject_ids" t-as="subject">
                                                     <li>
                                                         <t t-esc="subject.name"/>
                                                     </li>

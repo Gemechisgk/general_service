@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* school
+# 	* general_service
 #
 msgid ""
 msgstr ""
@@ -15,219 +15,219 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_departments__address
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_departments__address
 msgid "Address"
 msgstr "العنوان"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__age
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__age
 msgid "Age"
 msgstr "العمر"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__create_uid
-#: model:ir.model.fields,field_description:school.field_student_departments__create_uid
-#: model:ir.model.fields,field_description:school.field_student_result__create_uid
-#: model:ir.model.fields,field_description:school.field_student_student__create_uid
-#: model:ir.model.fields,field_description:school.field_student_subjects__create_uid
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__create_uid
+#: model:ir.model.fields,field_description:general_service.field_student_departments__create_uid
+#: model:ir.model.fields,field_description:general_service.field_student_result__create_uid
+#: model:ir.model.fields,field_description:general_service.field_student_student__create_uid
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__create_uid
 msgid "Created by"
 msgstr "تم الإنشاء بواسطة"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__create_date
-#: model:ir.model.fields,field_description:school.field_student_departments__create_date
-#: model:ir.model.fields,field_description:school.field_student_result__create_date
-#: model:ir.model.fields,field_description:school.field_student_student__create_date
-#: model:ir.model.fields,field_description:school.field_student_subjects__create_date
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__create_date
+#: model:ir.model.fields,field_description:general_service.field_student_departments__create_date
+#: model:ir.model.fields,field_description:general_service.field_student_result__create_date
+#: model:ir.model.fields,field_description:general_service.field_student_student__create_date
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__create_date
 msgid "Created on"
 msgstr "تم الإنشاء في"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__date_of_birth
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__date_of_birth
 msgid "Date of Birth"
 msgstr "تاريخ الميلاد"
 
-#. module: school
-#: model:ir.model,name:school.model_student_departments
+#. module: general_service
+#: model:ir.model,name:general_service.model_student_departments
 msgid "Department"
 msgstr "القسم"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_departments__name
-#: model:ir.model.fields,field_description:school.field_student_student__department_id
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_departments__name
+#: model:ir.model.fields,field_description:general_service.field_student_student__department_id
 msgid "Department Name"
 msgstr "اسم القسم"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__display_name
-#: model:ir.model.fields,field_description:school.field_student_departments__display_name
-#: model:ir.model.fields,field_description:school.field_student_result__display_name
-#: model:ir.model.fields,field_description:school.field_student_student__display_name
-#: model:ir.model.fields,field_description:school.field_student_subjects__display_name
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__display_name
+#: model:ir.model.fields,field_description:general_service.field_student_departments__display_name
+#: model:ir.model.fields,field_description:general_service.field_student_result__display_name
+#: model:ir.model.fields,field_description:general_service.field_student_student__display_name
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__display_name
 msgid "Display Name"
 msgstr "الاسم المعروض"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__amount
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__amount
 msgid "Fees"
 msgstr "الرسوم"
 
-#. module: school
-#: model:ir.model.fields.selection,name:school.selection__student_student__gender__female
+#. module: general_service
+#: model:ir.model.fields.selection,name:general_service.selection__student_student__gender__female
 msgid "Female"
 msgstr "أنثى"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__gender
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__gender
 msgid "Gender"
 msgstr "الجنس"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__id
-#: model:ir.model.fields,field_description:school.field_student_departments__id
-#: model:ir.model.fields,field_description:school.field_student_result__id
-#: model:ir.model.fields,field_description:school.field_student_student__id
-#: model:ir.model.fields,field_description:school.field_student_subjects__id
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__id
+#: model:ir.model.fields,field_description:general_service.field_student_departments__id
+#: model:ir.model.fields,field_description:general_service.field_student_result__id
+#: model:ir.model.fields,field_description:general_service.field_student_student__id
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__id
 msgid "ID"
 msgstr "معرف"
 
-#. module: school
-#: model:ir.model,name:school.model_image_card
-#: model_terms:ir.ui.view,arch_db:school.view_image_card_form
-#: model_terms:ir.ui.view,arch_db:school.view_image_card_list
+#. module: general_service
+#: model:ir.model,name:general_service.model_image_card
+#: model_terms:ir.ui.view,arch_db:general_service.view_image_card_form
+#: model_terms:ir.ui.view,arch_db:general_service.view_image_card_list
 msgid "Image Card"
 msgstr "بطاقة صورة"
 
-#. module: school
-#: model:ir.actions.act_window,name:school.action_image_card
-#: model:ir.ui.menu,name:school.menu_image_card
-#: model:ir.ui.menu,name:school.menu_image_card_root
+#. module: general_service
+#: model:ir.actions.act_window,name:general_service.action_image_card
+#: model:ir.ui.menu,name:general_service.menu_image_card
+#: model:ir.ui.menu,name:general_service.menu_image_card_root
 msgid "Image Cards"
 msgstr "بطاقات الصورة"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__is_student
-msgid "Is Student"
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__is_student
+msgid "Is Employee"
 msgstr "هل هو طالب"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__write_uid
-#: model:ir.model.fields,field_description:school.field_student_departments__write_uid
-#: model:ir.model.fields,field_description:school.field_student_result__write_uid
-#: model:ir.model.fields,field_description:school.field_student_student__write_uid
-#: model:ir.model.fields,field_description:school.field_student_subjects__write_uid
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__write_uid
+#: model:ir.model.fields,field_description:general_service.field_student_departments__write_uid
+#: model:ir.model.fields,field_description:general_service.field_student_result__write_uid
+#: model:ir.model.fields,field_description:general_service.field_student_student__write_uid
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__write_uid
 msgid "Last Updated by"
 msgstr "آخر تحديث بواسطة"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__write_date
-#: model:ir.model.fields,field_description:school.field_student_departments__write_date
-#: model:ir.model.fields,field_description:school.field_student_result__write_date
-#: model:ir.model.fields,field_description:school.field_student_student__write_date
-#: model:ir.model.fields,field_description:school.field_student_subjects__write_date
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__write_date
+#: model:ir.model.fields,field_description:general_service.field_student_departments__write_date
+#: model:ir.model.fields,field_description:general_service.field_student_result__write_date
+#: model:ir.model.fields,field_description:general_service.field_student_student__write_date
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__write_date
 msgid "Last Updated on"
 msgstr "آخر تحديث في"
 
-#. module: school
-#: model:ir.model.fields.selection,name:school.selection__student_student__gender__male
+#. module: general_service
+#: model:ir.model.fields.selection,name:general_service.selection__student_student__gender__male
 msgid "Male"
 msgstr "ذكر"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_result__result
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_result__result
 msgid "Result"
 msgstr "النتيجة"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__result_student_ids
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__result_student_ids
 msgid "Results"
 msgstr "النتائج"
 
-#. module: school
-#: model:ir.ui.menu,name:school.menu_student_root
+#. module: general_service
+#: model:ir.ui.menu,name:general_service.menu_student_root
 msgid "School"
 msgstr "المدرسة"
 
-#. module: school
-#: model:ir.model,name:school.model_student_student
-#: model:ir.model.fields,field_description:school.field_student_result__student_id
-#: model:res.groups,name:school.group_student
-#: model_terms:ir.ui.view,arch_db:school.view_student_form
-#: model_terms:ir.ui.view,arch_db:school.view_student_list
-#: model_terms:ir.ui.view,arch_db:school.view_student_search
-msgid "Student"
+#. module: general_service
+#: model:ir.model,name:general_service.model_student_student
+#: model:ir.model.fields,field_description:general_service.field_student_result__student_id
+#: model:res.groups,name:general_service.group_student
+#: model_terms:ir.ui.view,arch_db:general_service.view_student_form
+#: model_terms:ir.ui.view,arch_db:general_service.view_student_list
+#: model_terms:ir.ui.view,arch_db:general_service.view_student_search
+msgid "Employee"
 msgstr "طالب"
 
-#. module: school
-#: model:ir.module.category,name:school.main_student_category
-msgid "Student Access"
+#. module: general_service
+#: model:ir.module.category,name:general_service.main_student_category
+msgid "Employee Access"
 msgstr "وصول الطالب"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__name
-msgid "Student Name"
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__name
+msgid "Employee Name"
 msgstr "اسم الطالب"
 
-#. module: school
-#: model:res.groups,name:school.student_registration_group
-msgid "Student Registration"
+#. module: general_service
+#: model:res.groups,name:general_service.student_registration_group
+msgid "Employee Registration"
 msgstr "تسجيل الطالب"
 
-#. module: school
-#: model:ir.model,name:school.model_student_result
-msgid "Student Result"
+#. module: general_service
+#: model:ir.model,name:general_service.model_student_result
+msgid "Employee Result"
 msgstr "نتيجة الطالب"
 
-#. module: school
-#: model:ir.actions.act_window,name:school.action_student
-#: model:ir.ui.menu,name:school.menu_student
-#: model:ir.ui.menu,name:school.menu_student_student
-msgid "Students"
+#. module: general_service
+#: model:ir.actions.act_window,name:general_service.action_student
+#: model:ir.ui.menu,name:general_service.menu_student
+#: model:ir.ui.menu,name:general_service.menu_student_student
+msgid "Employees"
 msgstr "الطلاب"
 
-#. module: school
-#: model:ir.model,name:school.model_student_subjects
-#: model:ir.model.fields,field_description:school.field_student_result__subject_id
+#. module: general_service
+#: model:ir.model,name:general_service.model_student_subjects
+#: model:ir.model.fields,field_description:general_service.field_student_result__subject_id
 msgid "Subject"
 msgstr "الموضوع"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_subjects__name
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_subjects__name
 msgid "Subject Name"
 msgstr "اسم الموضوع"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_student_student__subject_ids
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_student_student__subject_ids
 msgid "Subjects"
 msgstr "المواد"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__name
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__name
 msgid "الاسم"
 msgstr "الاسم"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__image
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__image
 msgid "الصورة الشخصية"
 msgstr "الصورة الشخصية"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__card_id
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__card_id
 msgid "رقم البطاقة"
 msgstr "رقم البطاقة"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__phone
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__phone
 msgid "رقم الهاتف"
 msgstr "رقم الهاتف"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__receipt_image
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__receipt_image
 msgid "صورة الإيصال"
 msgstr "صورة الإيصال"
 
-#. module: school
-#: model:ir.model.fields,field_description:school.field_image_card__text
+#. module: general_service
+#: model:ir.model.fields,field_description:general_service.field_image_card__text
 msgid "ملاحظات"
 msgstr "ملاحظات"

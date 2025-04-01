@@ -1,22 +1,22 @@
 <odoo>
     <data>
         <!-- Report Action -->
-        <record id="action_student_registration_report" model="ir.actions.report">
-            <field name="name">Student Registration Report</field>
-            <field name="model">student.student</field>
+        <record id="action_employee_registration_report" model="ir.actions.report">
+            <field name="name">Employee Registration Report</field>
+            <field name="model">employee.employee</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">school.report_student_registration</field>
-            <field name="report_file">school.report_student_registration</field>
-            <field name="binding_model_id" ref="model_student_student"/>
+            <field name="report_name">general_service.report_employee_registration</field>
+            <field name="report_file">general_service.report_employee_registration</field>
+            <field name="binding_model_id" ref="model_employee_employee"/>
             <field name="binding_type">report</field>
         </record>
 
         <!-- Report Template -->
-        <template id="report_student_registration">
+        <template id="report_employee_registration">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <div class="page">
-                        <h2>Student Registration Report</h2>
+                        <h2>Employee Registration Report</h2>
                         <p><strong>Name:</strong> <span t-esc="doc.name"/></p>
                         <p><strong>Fees:</strong> <span t-esc="doc.amount"/></p>
                         <p><strong>Department:</strong> <span t-esc="doc.department_id.name"/></p>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+
+        <!--        create category  is the label that show in the settings of the user  -->
+        <record id="main_employee_category" model="ir.module.category">
+            <field name="name">Employee Access</field>
+        </record>
+        <!--        create groups-->
+        <record id="employee_registration_group" model="res.groups">
+            <field name="name">Employee Registration</field>
+            <field name="category_id" ref="general_service.main_employee_category"/>
+        </record>
+
+        <!--        record rule show male only-->
+        <record id="employee_record_rule_by_user" model="ir.rule">
+            <field name="name">employee.by.user</field>
+            <field name="model_id" ref="general_service.model_employee_employee"/>
+            <field name="domain_force">[('gender','=','male')]</field>
+            <!-- Assign permission to all internal users -->
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
+
+

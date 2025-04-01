@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import student_data_wizard
+from . import employee_data_wizard

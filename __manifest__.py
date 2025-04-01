@@ -22,16 +22,16 @@
 
     # always loaded
     'data': [
-        'security/students_groups_security.xml',
+        'security/employee_groups_security.xml',
         'security/ir.model.access.csv',
-        'report/student_registraion_report.xml',
-        'report/action_student_report_wizard.xml',
+        'report/employee_registration_report.xml',
+        'report/action_employee_report_wizard.xml',
         'report/analysis_report.xml',
         'views/views.xml',
         'views/templates.xml',
-        'views/students_process_view.xml',
+        'views/employee_process_view.xml',
         'views/image_card_view.xml',
-        'wizard/student_wizard.xml',
+        'wizard/employee_wizard.xml',
 
     ],
     # only loaded in demonstration mode

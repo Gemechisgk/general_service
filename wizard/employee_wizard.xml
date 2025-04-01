@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <odoo>
-    <record id="student_wizard" model="ir.ui.view">
-        <field name="name">print studentds</field>
-        <field name="model">student.registration.wizard</field>
+    <record id="employee_wizard" model="ir.ui.view">
+        <field name="name">print employeeds</field>
+        <field name="model">employee.registration.wizard</field>
         <field name="arch" type="xml">
-            <form string="Print Students">
+            <form string="Print Employees">
 
 
-                <p>Please select the student department</p>
+                <p>Please select the employee department</p>
                 <group>
                     <field name="department_id"/>
                 </group>
@@ -19,16 +19,16 @@
         </field>
     </record>
 
-    <record id="action_student_wizard" model="ir.actions.act_window">
-        <field name="name">Students</field>
-        <field name="res_model">student.registration.wizard</field>
+    <record id="action_employee_wizard" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">employee.registration.wizard</field>
         <field name="target">new</field>
         <field name="view_mode">form</field>
     </record>
 
 
-    <menuitem id="menu_student_wizard" name="Students Registration" parent="menu_student"
-              action="action_student_wizard"/>
+    <menuitem id="menu_employee_wizard" name="Employees Registration" parent="menu_employee"
+              action="action_employee_wizard"/>
 
 </odoo>
 

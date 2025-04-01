@@ -35,7 +35,7 @@
             <field name="res_model">image.card</field>
             <field name="view_mode">list,form</field>
         </record>
-        <menuitem id="menu_image_card_root" name="Image Cards" parent="menu_student_root"/>
+        <menuitem id="menu_image_card_root" name="Image Cards" parent="menu_employee_root"/>
         <menuitem id="menu_image_card_root" name="Image Cards"/>
         <menuitem id="menu_image_card" name="Image Cards" parent="menu_image_card_root" action="action_image_card"/>
     </data>
