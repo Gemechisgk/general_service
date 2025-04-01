@@ -5,7 +5,7 @@
         <field name="arch" type="xml">
             <form string="Employee">
                 <header>
-                    <button name="create_product" type="object" string="Create Product" class="btn-primary"
+                    <button name="create_id" type="object" string="Create ID" class="btn-primary"
                             icon="fa-plus"/>
                 </header>
                 <sheet>
@@ -13,11 +13,8 @@
                         <field name="name"/>
                     </group>
                     <group col="4">
-
-                        <field name="amount"/>
-                        <field name="department_id" domain="[('name', 'like', 'cs')]"/>
-                        <field name="subject_ids" widget="many2many_tags"/>
-                        <field name="result_employee_ids"/>
+                        <field name="department_id" />
+                        
                         <field name="age"/>
                         <field name="date_of_birth"/>
                         <field name="is_employee"/>
@@ -53,7 +50,6 @@
         <field name="arch" type="xml">
             <list string="Employee">
                 <field name="name"/>
-                <field name="amount"/>
                 <field name="department_id"/>
                 <field name="age"/>
                 <field name="date_of_birth"/>
@@ -80,11 +76,16 @@
         <field name="res_model">employee.employee</field>
         <field name="view_mode">list,form</field>
         <field name="view_mode">list,form,graph,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a employee !
+            </p>
+        </field>
     </record>
-    <menuitem id="menu_employee_root" name="General Service"/>
-    <menuitem id="menu_employee" name="Employees" parent="menu_employee_root"/>
-    <menuitem id="menu_employee_employee" name="Employees" parent="menu_employee" action="action_employee"/>
-
+    <menuitem id="menu_employee_root" name="General Service" sequence="10"/>
+    <menuitem id="menu_general_service_default" name="Employees" parent="menu_employee_root" action="action_employee" sequence="1"/>
+    <menuitem id="menu_employee" name="Rental Agreement" parent="menu_employee_root" sequence="20"/>
+    <menuitem id="menu_employee_employee" name="Employees" parent="menu_employee" action="action_employee" sequence="30"/>
+    <menuitem id="menu_rental_agreement" name="Rental Agreement" parent="menu_employee_root" action="action_rental_agreement" sequence="40"/>
 
 </odoo>
-        <!-- 1:9 -->

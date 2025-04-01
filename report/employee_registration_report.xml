@@ -18,15 +18,8 @@
                     <div class="page">
                         <h2>Employee Registration Report</h2>
                         <p><strong>Name:</strong> <span t-esc="doc.name"/></p>
-                        <p><strong>Fees:</strong> <span t-esc="doc.amount"/></p>
                         <p><strong>Department:</strong> <span t-esc="doc.department_id.name"/></p>
-                        <p><strong>Subjects:</strong>
-                            <ul>
-                                <t t-foreach="doc.subject_ids" t-as="subject">
-                                    <li t-esc="subject.name"/>
-                                </t>
-                            </ul>
-                        </p>
+                        
                         <p><strong>Age:</strong> <span t-esc="doc.age"/></p>
                         <p><strong>Date of Birth:</strong> <span t-esc="doc.date_of_birth"/></p>
                         <p><strong>Gender:</strong> <span t-esc="doc.gender"/></p>

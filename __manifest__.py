@@ -29,12 +29,11 @@
         'report/analysis_report.xml',
         'views/views.xml',
         'views/templates.xml',
-        'views/employee_process_view.xml',
+        'views/rental_agreement_view.xml',  
+        'views/employee_process_view.xml',  
         'views/image_card_view.xml',
         'wizard/employee_wizard.xml',
-
     ],
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],

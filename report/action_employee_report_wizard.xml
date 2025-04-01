@@ -45,14 +45,6 @@
                             .employee-table tbody tr:hover {
                             background-color: #f1f1f1;
                             }
-                            .subject-list {
-                            list-style-type: none;
-                            padding: 0;
-                            margin: 0;
-                            }
-                            .subject-list li {
-                            margin-bottom: 5px;
-                            }
                         </style>
                         <table class="employee-table">
                             <thead>
@@ -61,7 +53,6 @@
                                     <th>Department</th>
                                     <th>Age</th>
                                     <th>Gender</th>
-                                    <th>Subjects</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,15 +69,6 @@
                                         </td>
                                         <td>
                                             <t t-esc="employee.gender"/>
-                                        </td>
-                                        <td>
-                                            <ul class="subject-list">
-                                                <t t-foreach="employee.subject_ids" t-as="subject">
-                                                    <li>
-                                                        <t t-esc="subject.name"/>
-                                                    </li>
-                                                </t>
-                                            </ul>
                                         </td>
                                     </tr>
                                 </t>

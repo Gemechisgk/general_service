@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <record id="action_rental_agreement" model="ir.actions.act_window">
+            <field name="name">Rental Agreements</field>
+            <field name="res_model">rental.agreement</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </data>
+</odoo>
