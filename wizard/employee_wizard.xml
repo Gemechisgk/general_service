@@ -1,34 +1,68 @@
 <?xml version="1.0" ?>
 <odoo>
-    <record id="employee_wizard" model="ir.ui.view">
-        <field name="name">print employeeds</field>
-        <field name="model">employee.registration.wizard</field>
+    <!-- Custom form view for HR employees with print badge button -->
+    <record id="view_hr_employee_form_badge" model="ir.ui.view">
+        <field name="name">hr.employee.form.badge</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <form string="Print Employees">
-
-
-                <p>Please select the employee department</p>
-                <group>
-                    <field name="department_id"/>
-                </group>
-                <footer>
-                    <button name="print_report" string="Print" type="object" class="oe_highlight" data-hotkey="q"/>
-                    <button string="Cancel" class="btn btn-secondary" special="cancel" data-hotkey="x"/>
-                </footer>
-            </form>
+            <xpath expr="//header" position="inside">
+                <button name="print_badge" type="object" string="Print Badge" class="btn-primary" icon="fa-print"/>
+            </xpath>
         </field>
     </record>
 
-    <record id="action_employee_wizard" model="ir.actions.act_window">
-        <field name="name">Employees</field>
-        <field name="res_model">employee.registration.wizard</field>
-        <field name="target">new</field>
-        <field name="view_mode">form</field>
+    <!-- Custom list view for HR employees with certificate button -->
+    <record id="view_hr_employee_list_certificate" model="ir.ui.view">
+        <field name="name">hr.employee.list.certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="work_email"/>
+                <field name="work_phone"/>
+                <button name="print_resume" type="object" string="Print Resume" class="btn-primary" icon="fa-file-pdf-o"/>
+            </list>
+        </field>
     </record>
 
+    <!-- Simple action for employee list view -->
+    <record id="action_employee_simple_list" model="ir.actions.act_window">
+        <field name="name">Employees List</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_hr_employee_list_certificate"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No employees found!
+            </p>
+        </field>
+    </record>
 
-    <menuitem id="menu_employee_wizard" name="Employees Registration" parent="menu_employee"
-              action="action_employee_wizard"/>
+    <!-- Action to open employee certificates view -->
+    <record id="action_employee_certificate" model="ir.actions.act_window">
+        <field name="name">Employee Certificates</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_hr_employee_list_certificate"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No employees found!
+            </p>
+        </field>
+    </record>
 
+    <!-- Menu item for certificates -->
+    <menuitem id="menu_employee_certificate" name="Certificates" parent="menu_employee"
+              action="action_employee_certificate" sequence="30"/>
+
+    <!-- Menu item to trigger the action -->
+    <menuitem id="menu_employee_badge" name="Employee Badges" parent="menu_employee"
+              action="action_employee_badge" sequence="20"/>
 </odoo>
-

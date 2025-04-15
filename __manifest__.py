@@ -18,7 +18,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'hr'],
 
     # always loaded
     'data': [
@@ -27,6 +27,7 @@
         'report/employee_registration_report.xml',
         'report/action_employee_report_wizard.xml',
         'report/analysis_report.xml',
+        'report/employee_badge_report.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/rental_agreement_view.xml',  

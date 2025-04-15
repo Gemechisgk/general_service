@@ -83,3 +83,12 @@ class Employee(models.Model):
                 record.display_name = record.name.display_name
             else:
                 record.display_name = "Unnamed Employee"
+            
+    def view_all_employees(self):
+        return {
+            'name': 'All Employees',
+            'type': 'ir.actions.act_window',
+            'res_model': 'employee.employee',
+            'view_mode': 'list,form',
+            'target': 'current',
+        }
