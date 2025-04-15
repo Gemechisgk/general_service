@@ -34,6 +34,7 @@
         'views/employee_process_view.xml',  
         'views/image_card_view.xml',
         'wizard/employee_wizard.xml',
+        'wizard/hr_employee_cv_wizard_view.xml',
     ],
     'demo': [
         'demo/demo.xml',

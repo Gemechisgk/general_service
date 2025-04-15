@@ -22,24 +22,9 @@
                 <field name="department_id"/>
                 <field name="job_id"/>
                 <field name="work_email"/>
-                <field name="work_phone"/>
+                <field name="employment_duration"/>
                 <button name="print_resume" type="object" string="Print Resume" class="btn-primary" icon="fa-file-pdf-o"/>
             </list>
-        </field>
-    </record>
-
-    <!-- Simple action for employee list view -->
-    <record id="action_employee_simple_list" model="ir.actions.act_window">
-        <field name="name">Employees List</field>
-        <field name="res_model">hr.employee</field>
-        <field name="view_mode">list,form</field>
-        <field name="view_id" ref="view_hr_employee_list_certificate"/>
-        <field name="domain">[]</field>
-        <field name="context">{}</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No employees found!
-            </p>
         </field>
     </record>
 
@@ -58,11 +43,46 @@
         </field>
     </record>
 
-    <!-- Menu item for certificates -->
-    <menuitem id="menu_employee_certificate" name="Certificates" parent="menu_employee"
-              action="action_employee_certificate" sequence="30"/>
+    <!-- Custom list view for HR employees with badge button -->
+    <record id="view_hr_employee_list_badge" model="ir.ui.view">
+        <field name="name">hr.employee.list.badge</field>
+        <field name="model">hr.employee</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="job_id"/>
+                <field name="work_email"/>
+                <field name="employment_duration"/>
+                <button name="print_badge" type="object" string="Print Badge" class="btn-primary" icon="fa-print"/>
+            </list>
+        </field>
+    </record>
 
-    <!-- Menu item to trigger the action -->
+    <!-- Action to open employee badges view -->
+    <record id="action_employee_badge" model="ir.actions.act_window">
+        <field name="name">Employee Badges</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="view_hr_employee_list_badge"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Show Employee Badges!
+            </p>
+        </field>
+    </record>
+
+    <!-- Root menu item -->
+    <menuitem id="menu_employee_root" name="General Service" sequence="10"/>
+
+    <!-- Employee menu items -->
+    <menuitem id="menu_employee" name="Employee" parent="menu_employee_root" sequence="20"/>
+    
+    <!-- Badges and Certificates menu items -->
     <menuitem id="menu_employee_badge" name="Employee Badges" parent="menu_employee"
-              action="action_employee_badge" sequence="20"/>
+              action="action_employee_badge" sequence="30"/>
+    <menuitem id="menu_employee_certificate" name="Certificates" parent="menu_employee"
+              action="action_employee_certificate" sequence="40"/>
 </odoo>

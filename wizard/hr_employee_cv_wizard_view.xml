@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_hr_employee_cv_wizard" model="ir.ui.view">
+        <field name="name">hr.employee.cv.wizard.form</field>
+        <field name="model">hr.employee.cv.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Print Resume">
+                <sheet>
+                    <group>
+                        <field name="employee_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="color_primary"/>
+                        <field name="color_secondary"/>
+                        <field name="show_skills" invisible="not can_show_skills"/>
+                        <field name="show_contact"/>
+                        <field name="show_others" invisible="not can_show_others"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_validate" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_employee_cv_wizard" model="ir.actions.act_window">
+        <field name="name">Print Resume</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.cv.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo> 
