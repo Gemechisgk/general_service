@@ -73,16 +73,4 @@
             </p>
         </field>
     </record>
-
-    <!-- Root menu item -->
-    <menuitem id="menu_employee_root" name="General Service" sequence="10"/>
-
-    <!-- Employee menu items -->
-    <menuitem id="menu_employee" name="Employee" parent="menu_employee_root" sequence="20"/>
-    
-    <!-- Badges and Certificates menu items -->
-    <menuitem id="menu_employee_badge" name="Employee Badges" parent="menu_employee"
-              action="action_employee_badge" sequence="30"/>
-    <menuitem id="menu_employee_certificate" name="Certificates" parent="menu_employee"
-              action="action_employee_certificate" sequence="40"/>
 </odoo>

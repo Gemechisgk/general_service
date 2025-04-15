@@ -1,4 +1,9 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_employee_employee,employee_employee,model_employee_employee,base.group_user,1,1,1,1
-access_image_card,image_card,model_image_card,base.group_user,1,1,1,1
-access_employee_registration_wizard,employee_registration_wizard,model_employee_registration_wizard,base.group_user,1,1,1,1
+access_employee_employee,employee.employee,model_employee_employee,base.group_user,1,1,1,1
+access_image_card,image.card,model_image_card,base.group_user,1,1,1,1
+access_rental_agreement,rental.agreement,model_rental_agreement,base.group_user,1,1,1,1
+access_rental_agreement_version,rental.agreement.version,model_rental_agreement_version,base.group_user,1,1,1,1
+access_property_management,property.management,model_property_management,base.group_user,1,1,1,1
+access_property_ownership_history,property.ownership.history,model_property_ownership_history,base.group_user,1,1,1,1
+access_employee_registration_wizard,employee.registration.wizard,model_employee_registration_wizard,base.group_user,1,1,1,1
+access_hr_employee_cv_wizard,hr.employee.cv.wizard,model_hr_employee_cv_wizard,base.group_user,1,1,1,1

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_property_id_report" model="ir.actions.report">
+        <field name="name">Property ID Label</field>
+        <field name="model">property.management</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">general_service.property_id_template</field>
+        <field name="report_file">general_service.property_id_template</field>
+        <field name="print_report_name">'Property ID - %s' % object.property_id</field>
+        <field name="binding_model_id" ref="model_property_management"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="property_id_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h2>Property ID Card</h2>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <strong>Property ID:</strong>
+                                <p t-esc="o.property_id"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Property Name:</strong>
+                                <p t-esc="o.name"/>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <strong>Location:</strong>
+                                <p t-esc="o.location"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Type:</strong>
+                                <p t-esc="o.property_type"/>
+                            </div>
+                        </div>
+                        
+                        <!-- Simple barcode visualization with background image approach -->
+                        <div class="row mt-4">
+                            <div class="col-12 text-center">
+                                <h4>Property ID</h4>
+                                <div style="width: 100%; text-align: center; margin: 20px 0;">
+                                    <!-- Barcode representation using a single black rectangle with white text -->
+                                    <div style="display: inline-block; background-color: white; border: 1px solid #000; padding: 15px 30px;">
+                                        <div style="text-align: center;">
+                                            <div style="font-family: 'Liberation Mono', monospace; font-size: 28px; font-weight: bold; margin-bottom: 15px;">
+                                                <t t-esc="o.property_id"/>
+                                            </div>
+                                            <div style="width: 280px; height: 60px; background-color: black; position: relative;">
+                                                <!-- White vertical bars to simulate barcode -->
+                                                <div style="position: absolute; left: 10px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 20px; top: 0; width: 4px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 35px; top: 0; width: 1px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 45px; top: 0; width: 3px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 60px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 70px; top: 0; width: 7px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 85px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 95px; top: 0; width: 1px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 105px; top: 0; width: 4px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 120px; top: 0; width: 1px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 130px; top: 0; width: 6px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 145px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 155px; top: 0; width: 4px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 170px; top: 0; width: 3px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 180px; top: 0; width: 5px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 195px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 205px; top: 0; width: 4px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 220px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 230px; top: 0; width: 6px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 245px; top: 0; width: 3px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 255px; top: 0; width: 2px; height: 60px; background-color: white;"></div>
+                                                <div style="position: absolute; left: 265px; top: 0; width: 5px; height: 60px; background-color: white;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QR Code -->
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <h4>QR Code</h4>
+                                <img t-att-src="'/report/barcode/QR/%s' % o.property_id" style="width: 150px; height: 150px;"/>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo> 

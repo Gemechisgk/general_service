@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_rental_agreement" model="ir.actions.report">
+        <field name="name">Rental Agreement</field>
+        <field name="model">rental.agreement</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">general_service.rental_agreement_template</field>
+        <field name="report_file">general_service.rental_agreement_template</field>
+        <field name="print_report_name">'Rental Agreement - %s' % object.name</field>
+        <field name="binding_model_id" ref="model_rental_agreement"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="rental_agreement_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h2>Rental Agreement</h2>
+                                <hr/>
+                                <p>This rental agreement is made and entered into on <span t-esc="o.create_date.strftime('%Y-%m-%d')"/> between:</p>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <h4>R</h4>
+                                        <p><strong>Name:</strong> <span t-esc="o.property_owner_id.name"/></p>
+                                        <p><strong>Address:</strong> <span t-esc="o.property_address"/></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4>Renter</h4>
+                                        <p><strong>Name:</strong> <span t-esc="o.renter_id.name"/></p>
+                                        <p><strong>Address:</strong> <span t-esc="o.renter_address"/></p>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <h4>Property Details</h4>
+                                        <p><strong>Property Address:</strong> <span t-esc="o.property_address"/></p>
+                                        <p><strong>Monthly Rent:</strong> <span t-esc="o.rental_amount"/></p>
+                                        <p><strong>Contract Period:</strong> From <span t-esc="o.start_date.strftime('%Y-%m-%d')"/> to <span t-esc="o.end_date.strftime('%Y-%m-%d')"/></p>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        <h4>Terms and Conditions</h4>
+                                        <p>1. The renter agrees to pay the monthly rent of <span t-esc="o.rental_amount"/> on or before the first day of each month.</p>
+                                        <p>2. The renter shall maintain the property in good condition and notify the renting company of any necessary repairs.</p>
+                                        <p>3. The renting company shall be responsible for major repairs and maintenance of the property.</p>
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <h4>Renter's Signature</h4>
+                                        <p>___________________________</p>
+                                        <p>Date: <span t-esc="o.create_date.strftime('%Y-%m-%d')"/></p>
+                                    </div>
+                                    <div class="col-6">
+                                        <h4>Rental Company's Signature</h4>
+                                        <p>___________________________</p>
+                                        <p>Date: <span t-esc="o.create_date.strftime('%Y-%m-%d')"/></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo> 

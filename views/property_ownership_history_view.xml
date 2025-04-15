@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_property_ownership_history_tree" model="ir.ui.view">
+        <field name="name">property.ownership.history.tree</field>
+        <field name="model">property.ownership.history</field>
+        <field name="arch" type="xml">
+            <list string="Ownership History" editable="bottom">
+                <field name="property_id" invisible="0"/>
+                <field name="transfer_date"/>
+                <field name="transfer_document" filename="transfer_document_name"/>
+                <field name="notes"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_property_ownership_history_form" model="ir.ui.view">
+        <field name="name">property.ownership.history.form</field>
+        <field name="model">property.ownership.history</field>
+        <field name="arch" type="xml">
+            <form string="Ownership History">
+                <sheet>
+                    <group>
+                        <field name="property_id"/>
+                        <field name="transfer_date"/>
+                        <field name="transfer_document" filename="transfer_document_name"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_property_ownership_history_search" model="ir.ui.view">
+        <field name="name">property.ownership.history.search</field>
+        <field name="model">property.ownership.history</field>
+        <field name="arch" type="xml">
+            <search string="Ownership History">
+                <field name="property_id"/>
+                <field name="transfer_date"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_property_ownership_history" model="ir.actions.act_window">
+        <field name="name">Ownership History</field>
+        <field name="res_model">property.ownership.history</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first ownership transfer record!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Structure -->
+    <menuitem id="menu_property_ownership_history" name="Ownership History" parent="menu_property_root" 
+              action="action_property_ownership_history" sequence="20"/>
+</odoo> 

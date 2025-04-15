@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_property_management_form" model="ir.ui.view">
+        <field name="name">property.management.form</field>
+        <field name="model">property.management</field>
+        <field name="arch" type="xml">
+            <form string="Property Management">
+                <header>
+                    <button name="action_print_property_id" string="Print Property ID" type="object" class="btn-primary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,inactive"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <h2>
+                            <field name="property_id" readonly="1"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="property_type"/>
+                            <field name="location"/>
+                            <field name="acquisition_date"/>
+                            <field name="current_value"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="barcode" readonly="1"/>
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_property_management_tree" model="ir.ui.view">
+        <field name="name">property.management.tree</field>
+        <field name="model">property.management</field>
+        <field name="arch" type="xml">
+            <list string="Properties">
+                <field name="property_id"/>
+                <field name="name"/>
+                <field name="property_type"/>
+                <field name="location"/>
+                <field name="current_value"/>
+                <field name="company_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_property_management_search" model="ir.ui.view">
+        <field name="name">property.management.search</field>
+        <field name="model">property.management</field>
+        <field name="arch" type="xml">
+            <search string="Properties">
+                <field name="property_id"/>
+                <field name="name"/>
+                <field name="location"/>
+                <field name="property_type"/>
+                <field name="company_id"/>
+                <filter string="Residential" name="residential" domain="[('property_type','=','residential')]"/>
+                <filter string="Commercial" name="commercial" domain="[('property_type','=','commercial')]"/>
+                <filter string="Industrial" name="industrial" domain="[('property_type','=','industrial')]"/>
+                <filter string="Land" name="land" domain="[('property_type','=','land')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_property_management" model="ir.actions.act_window">
+        <field name="name">Property Management</field>
+        <field name="res_model">property.management</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first property!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Structure -->
+    <menuitem id="menu_property_root" name="Property Management" parent="menu_general_service_root" sequence="40"/>
+    <menuitem id="menu_property_management" name="Properties" parent="menu_property_root" 
+              action="action_property_management" sequence="10"/>
+</odoo> 

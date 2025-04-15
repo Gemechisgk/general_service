@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequence for Property Management -->
+        <record id="seq_property_management" model="ir.sequence">
+            <field name="name">Property Management</field>
+            <field name="code">property.management</field>
+            <field name="prefix">PROP/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequence for Rental Agreement -->
+        <record id="seq_rental_agreement" model="ir.sequence">
+            <field name="name">Rental Agreement</field>
+            <field name="code">rental.agreement</field>
+            <field name="prefix">RA/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo> 
