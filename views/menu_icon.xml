@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Main Menu with Icon -->
+    <menuitem id="menu_general_service_root"
+              name="General Service"
+              web_icon="general_service,static/description/icon.png"
+              sequence="10"/>
+</odoo> 

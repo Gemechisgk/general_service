@@ -24,22 +24,21 @@
                                 <p>This rental agreement is made and entered into on <span t-esc="o.create_date.strftime('%Y-%m-%d')"/> between:</p>
                                 <div class="row mt-4">
                                     <div class="col-6">
-                                        <h4>R</h4>
+                                        <h4>Property Owner</h4>
                                         <p><strong>Name:</strong> <span t-esc="o.property_owner_id.name"/></p>
                                         <p><strong>Address:</strong> <span t-esc="o.property_address"/></p>
                                     </div>
                                     <div class="col-6">
-                                        <h4>Renter</h4>
-                                        <p><strong>Name:</strong> <span t-esc="o.renter_id.name"/></p>
-                                        <p><strong>Address:</strong> <span t-esc="o.renter_address"/></p>
+                                        <h4>Property Details</h4>
+                                        <p><strong>Property Address:</strong> <span t-esc="o.property_address"/></p>
+                                        <p><strong>Monthly Rent:</strong> <span t-esc="o.rental_amount"/></p>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-12">
-                                        <h4>Property Details</h4>
-                                        <p><strong>Property Address:</strong> <span t-esc="o.property_address"/></p>
-                                        <p><strong>Monthly Rent:</strong> <span t-esc="o.rental_amount"/></p>
-                                        <p><strong>Contract Period:</strong> From <span t-esc="o.start_date.strftime('%Y-%m-%d')"/> to <span t-esc="o.end_date.strftime('%Y-%m-%d')"/></p>
+                                        <h4>Contract Period</h4>
+                                        <p><strong>Start Date:</strong> <span t-esc="o.start_date.strftime('%Y-%m-%d')"/></p>
+                                        <p><strong>End Date:</strong> <span t-esc="o.end_date.strftime('%Y-%m-%d')"/></p>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
@@ -52,7 +51,7 @@
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-6">
-                                        <h4>Renter's Signature</h4>
+                                        <h4>Property Owner's Signature</h4>
                                         <p>___________________________</p>
                                         <p>Date: <span t-esc="o.create_date.strftime('%Y-%m-%d')"/></p>
                                     </div>
