@@ -42,8 +42,15 @@
                                 <p t-esc="o.property_type"/>
                             </div>
                         </div>
-                        
-                        <!-- Simple barcode visualization with background image approach -->
+                    </div>
+                    
+                    <!-- New page for barcode and QR code -->
+                    <div class="page" style="page-break-before: always;">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h2>Property ID Card - Barcode</h2>
+                            </div>
+                        </div>
                         <div class="row mt-4">
                             <div class="col-12 text-center">
                                 <h4>Property ID</h4>
@@ -92,7 +99,6 @@
                                 <img t-att-src="'/report/barcode/QR/%s' % o.property_id" style="width: 150px; height: 150px;"/>
                             </div>
                         </div>
-                        
                     </div>
                 </t>
             </t>

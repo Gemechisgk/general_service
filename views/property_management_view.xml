@@ -33,6 +33,7 @@
                         </group>
                     </group>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -85,4 +86,5 @@
     <menuitem id="menu_property_root" name="Property Management" parent="menu_general_service_root" sequence="40"/>
     <menuitem id="menu_property_management" name="Properties" parent="menu_property_root" 
               action="action_property_management" sequence="10"/>
+              
 </odoo> 
