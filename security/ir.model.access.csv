@@ -10,3 +10,7 @@ access_fuel_request_user,fuel.request.user,model_fuel_request,general_service.gr
 access_fuel_request_manager,fuel.request.manager,model_fuel_request,general_service.group_fuel_request_manager,1,1,1,1
 material_distribution_user,material.distribution.user,model_material_distribution,base.group_user,1,1,1,1
 material_distribution_line_user,material.distribution.line.user,model_material_distribution_line,base.group_user,1,1,1,1
+access_airplane_ticket_user,airplane.ticket.user,model_airplane_ticket,base.group_user,1,1,1,0
+access_airplane_ticket_manager,airplane.ticket.manager,model_airplane_ticket,base.group_system,1,1,1,1
+access_vehicle_request_user,vehicle.request.user,model_vehicle_request,base.group_user,1,1,1,0
+access_vehicle_request_manager,vehicle.request.manager,model_vehicle_request,base.group_system,1,1,1,1

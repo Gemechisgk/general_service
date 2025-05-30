@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vehicle_request_form" model="ir.ui.view">
+        <field name="name">vehicle.request.form</field>
+        <field name="model">vehicle.request</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle Travel Request">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_start_trip" string="Start Trip" type="object" class="oe_highlight"
+                            invisible="state != 'draft'"/>
+                    <button name="action_return" string="Mark as Returned" type="object" class="oe_highlight"
+                            invisible="state != 'in_use'"/>
+                    <button name="action_print_request" string="Print" type="object" class="btn-primary"/>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="draft,in_use,returned"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Requester Details">
+                            <field name="requester_id"/>
+                            <field name="department_id"/>
+                            <field name="contact_number"/>
+                        </group>
+                        <group string="Travel Details">
+                            <field name="travel_datetime"/>
+                            <field name="destination"/>
+                            <field name="purpose"/>
+                            <field name="odometer_start"/>
+                            <field name="odometer_end"/>
+                            <field name="distance_traveled"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Vehicle Assignment">
+                            <field name="vehicle_id"/>
+                            <field name="driver_id"/>
+                            <field name="plate_number"/>
+                            <field name="expected_return_datetime"/>
+                            <field name="actual_return_datetime"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_request_list" model="ir.ui.view">
+        <field name="name">vehicle.request.list</field>
+        <field name="model">vehicle.request</field>
+        <field name="arch" type="xml">
+            <list string="Vehicle Travel Requests" decoration-info="state == 'draft'" 
+                  decoration-primary="state == 'in_use'"
+                  decoration-muted="state == 'returned'">
+                <field name="name"/>
+                <field name="requester_id"/>
+                <field name="department_id"/>
+                <field name="travel_datetime"/>
+                <field name="destination"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_vehicle_request_search" model="ir.ui.view">
+        <field name="name">vehicle.request.search</field>
+        <field name="model">vehicle.request</field>
+        <field name="arch" type="xml">
+            <search string="Vehicle Travel Requests">
+                <field name="name"/>
+                <field name="requester_id"/>
+                <field name="department_id"/>
+                <field name="destination"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="state"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="In Use" name="in_use" domain="[('state', '=', 'in_use')]"/>
+                <filter string="Returned" name="returned" domain="[('state', '=', 'returned')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Requester" name="group_requester" context="{'group_by': 'requester_id'}"/>
+                    <filter string="Department" name="group_department" context="{'group_by': 'department_id'}"/>
+                    <filter string="Vehicle" name="group_vehicle" context="{'group_by': 'vehicle_id'}"/>
+                    <filter string="Driver" name="group_driver" context="{'group_by': 'driver_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_vehicle_request" model="ir.actions.act_window">
+        <field name="name">Vehicle Requests</field>
+        <field name="res_model">vehicle.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vehicle travel request!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_vehicle_request"
+              name="Vehicle Requests"
+              parent="menu_general_service_root"
+              sequence="50"/>
+              
+    <menuitem id="menu_vehicle_request_form"
+              name="Travel Requests"
+              parent="menu_vehicle_request"
+              action="action_vehicle_request"
+              sequence="10"/>
+</odoo> 

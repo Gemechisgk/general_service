@@ -74,6 +74,27 @@
             <field name="perm_unlink" eval="True"/>
         </record>
 
+        <!-- General Service Module Category -->
+        <record id="module_category_general_service" model="ir.module.category">
+            <field name="name">General Service</field>
+            <field name="description">Manage General Service Access</field>
+            <field name="sequence">5</field>
+        </record>
+
+        <!-- General Service Access Group -->
+        <record id="group_general_service_user" model="res.groups">
+            <field name="name">General Service Access</field>
+            <field name="category_id" ref="module_category_general_service"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Document Printing Permission Group -->
+        <record id="group_employee_document_print" model="res.groups">
+            <field name="name">Print Employee Documents</field>
+            <field name="category_id" ref="module_category_general_service"/>
+            <field name="implied_ids" eval="[(4, ref('group_general_service_user'))]"/>
+        </record>
+
     </data>
 </odoo>
 

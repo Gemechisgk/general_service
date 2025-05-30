@@ -4,5 +4,6 @@
     <menuitem id="menu_general_service_root"
               name="General Service"
               web_icon="general_service,static/description/icon.png"
-              sequence="10"/>
+              sequence="10"
+              groups="general_service.group_general_service_user"/>
 </odoo> 

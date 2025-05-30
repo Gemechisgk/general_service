@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_airplane_ticket_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">Airplane Ticket Request</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Request Number:</strong>
+                                <span t-field="doc.name"/>
+                                <br/>
+                                <strong>Status:</strong>
+                                <span t-field="doc.state"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Date:</strong>
+                                <span t-field="doc.create_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                            </div>
+                        </div>
+
+                        <h4>Requester Details</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Full Name:</strong>
+                                <span t-field="doc.requester_id.name"/>
+                                <br/>
+                                <strong>Department:</strong>
+                                <span t-field="doc.department_id.name"/>
+                                <br/>
+                                <strong>Contact Number:</strong>
+                                <span t-field="doc.contact_number"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Reason for Travel:</strong>
+                                <p t-field="doc.reason_for_travel"/>
+                            </div>
+                        </div>
+
+                        <h4 class="mt32">Travel Details</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Origin:</strong>
+                                <span t-field="doc.origin"/>
+                                <br/>
+                                <strong>Destination:</strong>
+                                <span t-field="doc.destination"/>
+                                <br/>
+                                <strong>Travel Type:</strong>
+                                <span t-field="doc.travel_type"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Departure Date:</strong>
+                                <span t-field="doc.departure_date"/>
+                                <br/>
+                                <strong>Departure Time:</strong>
+                                <span t-field="doc.departure_time" t-options='{"widget": "float_time"}'/>
+                                <t t-if="doc.travel_type == 'round_trip'">
+                                    <br/>
+                                    <strong>Return Date:</strong>
+                                    <span t-field="doc.return_date"/>
+                                </t>
+                            </div>
+                        </div>
+
+                        <h4 class="mt32">Travel Agent Details</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Travel Agent:</strong>
+                                <span t-field="doc.travel_agent_id.name"/>
+                                <br/>
+                                <strong>Contract Reference:</strong>
+                                <span t-field="doc.contract_reference"/>
+                                <br/>
+                                <strong>Flight Number:</strong>
+                                <span t-field="doc.flight_number"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Ticket Price:</strong>
+                                <span t-field="doc.ticket_price" t-options='{"widget": "monetary", "display_currency": doc.company_id.currency_id}'/>
+                            </div>
+                        </div>
+
+                        <!-- Hidden Approval Information (for report only) -->
+                        <t t-if="doc.approved_by or doc.approval_date">
+                            <h4 class="mt32">Approval Information</h4>
+                            <div class="row">
+                                <div class="col-6">
+                                    <strong>Approved By:</strong>
+                                    <span t-field="doc.approved_by.name"/>
+                                    <br/>
+                                    <strong>Approval Date:</strong>
+                                    <span t-field="doc.approval_date"/>
+                                </div>
+                            </div>
+                        </t>
+
+                        <t t-if="doc.notes">
+                            <h4 class="mt32">Notes</h4>
+                            <p t-field="doc.notes"/>
+                        </t>
+
+                        <div class="row mt64">
+                            <div class="col-6">
+                                <p>____________________<br/>Requester Signature</p>
+                            </div>
+                            <div class="col-6 text-right">
+                                <p>____________________<br/>Approver Signature</p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_airplane_ticket" model="ir.actions.report">
+        <field name="name">Airplane Ticket Request</field>
+        <field name="model">airplane.ticket</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">general_service.report_airplane_ticket_document</field>
+        <field name="report_file">general_service.report_airplane_ticket_document</field>
+        <field name="binding_model_id" ref="model_airplane_ticket"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo> 

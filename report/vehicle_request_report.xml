@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_vehicle_request_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">Vehicle Travel Request</h2>
+                        
+                        <div class="row mt32 mb32">
+                            <div class="col-6">
+                                <strong>Request Number:</strong> <span t-field="doc.name"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Status:</strong> <span t-field="doc.state"/>
+                            </div>
+                        </div>
+
+                        <!-- Requester Details -->
+                        <h4>Requester Details</h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <strong>Full Name:</strong> <span t-field="doc.requester_id.name"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Department:</strong> <span t-field="doc.department_id.name"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Contact Number:</strong> <span t-field="doc.contact_number"/>
+                            </div>
+                        </div>
+
+                        <!-- Travel Details -->
+                        <h4 class="mt16">Travel Details</h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <strong>Date and Time of Travel:</strong> <span t-field="doc.travel_datetime"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Destination:</strong> <span t-field="doc.destination"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Purpose of Travel:</strong> <span t-field="doc.purpose"/>
+                            </div>
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-4">
+                                <strong>Distance Traveled:</strong> <span t-field="doc.distance_traveled"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Starting Odometer:</strong> <span t-field="doc.odometer_start"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Ending Odometer:</strong> <span t-field="doc.odometer_end"/>
+                            </div>
+                        </div>
+
+                        <!-- Vehicle Assignment -->
+                        <h4 class="mt16">Vehicle Assignment</h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <strong>Assigned Vehicle:</strong> <span t-field="doc.vehicle_id.name"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Driver's Name:</strong> <span t-field="doc.driver_id.name"/>
+                            </div>
+                            <div class="col-4">
+                                <strong>Plate Number:</strong> <span t-field="doc.plate_number"/>
+                            </div>
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-6">
+                                <strong>Expected Return:</strong> <span t-field="doc.expected_return_datetime"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Actual Return:</strong> <span t-field="doc.actual_return_datetime"/>
+                            </div>
+                        </div>
+
+                        <!-- Approval Information -->
+                        <h4 class="mt16">Approval Information</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Department Head:</strong> <span t-field="doc.department_head_id.name"/>
+                                <br/>
+                                <strong>Approval Date:</strong> <span t-field="doc.dept_approval_date"/>
+                                <br/>
+                                 <p>____________________<br/>General Service Head Signature</p>
+                            </div>
+                            <div class="col-6">
+                                <strong>General Service Head:</strong> <span t-field="doc.service_head_id.name"/>
+                                <br/>
+                                <strong>Approval Date:</strong> <span t-field="doc.service_approval_date"/>
+                                <br/>
+                                 <p>____________________<br/>General Service Head Signature</p>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="row mt16" t-if="doc.notes">
+                            <div class="col-12">
+                                <h4>Notes</h4>
+                                <p t-field="doc.notes"/>
+                            </div>
+                        </div>
+
+                        <!-- Signature Lines (only for draft state) -->
+                        <div class="row mt64" t-if="doc.state == 'draft'">
+                            <div class="col-4 text-center">
+                                <p>____________________<br/>Requester Signature</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_vehicle_request" model="ir.actions.report">
+        <field name="name">Vehicle Travel Request</field>
+        <field name="model">vehicle.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">general_service.report_vehicle_request_document</field>
+        <field name="report_file">general_service.report_vehicle_request_document</field>
+        <field name="binding_model_id" ref="model_vehicle_request"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo> 

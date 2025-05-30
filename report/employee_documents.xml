@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Employee Badge Template -->
+    <template id="report_employee_badge">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="employee">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-6 offset-3 text-center">
+                                <h2>Employee Badge</h2>
+                                <div t-if="employee.image" class="mt-3 mb-3">
+                                    <img t-att-src="image_data_uri(employee.image)" style="max-width: 200px;"/>
+                                </div>
+                                <h3><t t-esc="employee.name"/></h3>
+                                <div class="mt-3">
+                                    <strong>Department: </strong><span t-field="employee.department_id"/>
+                                </div>
+                                <div class="mt-2">
+                                    <strong>Employee ID: </strong><span t-field="employee.id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Employee Certificate Template -->
+    <template id="report_employee_certificate">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="employee">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h1>Certificate of Employment</h1>
+                                <div class="mt-5">
+                                    This is to certify that <strong><t t-esc="employee.name"/></strong>
+                                    is an employee of our company in the <strong><t t-esc="employee.department_id.name"/></strong> department.
+                                </div>
+                                <div class="mt-5">
+                                    <p>This certificate is issued upon request of the employee for whatever legal purpose it may serve.</p>
+                                </div>
+                                <div class="mt-5">
+                                    <p>Issued on: <t t-esc="context_timestamp(datetime.datetime.now()).strftime('%B %d, %Y')"/></p>
+                                </div>
+                                <div class="mt-5">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>_____________________</p>
+                                            <p>HR Manager</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p>_____________________</p>
+                                            <p>Company Director</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo> 

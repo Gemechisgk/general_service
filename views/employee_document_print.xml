@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Print Badge Action -->
+    <record id="action_print_employee_badge" model="ir.actions.report">
+        <field name="name">Print Employee Badge</field>
+        <field name="model">employee.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">general_service.report_employee_badge</field>
+        <field name="report_file">general_service.report_employee_badge</field>
+        <field name="binding_model_id" ref="model_employee_employee"/>
+        <field name="groups_id" eval="[(4, ref('general_service.group_employee_document_print'))]"/>
+    </record>
+
+    <!-- Print Certificate Action -->
+    <record id="action_print_employee_certificate" model="ir.actions.report">
+        <field name="name">Print Employee Certificate</field>
+        <field name="model">employee.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">general_service.report_employee_certificate</field>
+        <field name="report_file">general_service.report_employee_certificate</field>
+        <field name="binding_model_id" ref="model_employee_employee"/>
+        <field name="groups_id" eval="[(4, ref('general_service.group_employee_document_print'))]"/>
+    </record>
+
+    <!-- Modify Employee Form View to Add Print Buttons -->
+    <record id="view_employee_form_inherit_print" model="ir.ui.view">
+        <field name="name">employee.form.print.buttons</field>
+        <field name="model">employee.employee</field>
+        <field name="inherit_id" ref="view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="before">
+                <header>
+                    <button name="%(action_print_employee_badge)d" 
+                            string="Print Badge" 
+                            type="action" 
+                            groups="general_service.group_employee_document_print"
+                            class="oe_highlight"/>
+                    <button name="%(action_print_employee_certificate)d" 
+                            string="Print Certificate" 
+                            type="action" 
+                            groups="general_service.group_employee_document_print"
+                            class="oe_highlight"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo> 

@@ -148,4 +148,4 @@
               action="action_fuel_request"
               sequence="30"
               groups="general_service.group_fuel_request_user,general_service.group_fuel_request_manager"/>
-</odoo> 
+</odoo>     
