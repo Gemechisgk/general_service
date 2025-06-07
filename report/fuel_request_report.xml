@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_fuel_request_report" model="ir.actions.report">
+            <field name="name">Fuel Request</field>
+            <field name="model">fuel.request</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">general_service.fuel_request_template</field>
+            <field name="report_file">general_service.fuel_request_template</field>
+            <field name="print_report_name">'Fuel Request - %s' % object.name</field>
+            <field name="binding_model_id" ref="model_fuel_request"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="fuel_request_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <h2>Fuel Request</h2>
+                                    <hr/>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" class="text-center">Request Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="50%"><strong>Request Number:</strong> <span t-esc="o.name"/></td>
+                                                <td width="50%"><strong>Date:</strong> <span t-esc="o.date"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Description:</strong> <span t-esc="o.description"/></td>
+                                                <td><strong>Plate Number:</strong> <span t-esc="o.plate_number"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" class="text-center">Vehicle Information</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="50%"><strong>Previous KM Reading:</strong> <span t-esc="o.previous_km_reading"/></td>
+                                                <td width="50%"><strong>Current KM Reading:</strong> <span t-esc="o.current_km_reading"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>KM Difference:</strong> <span t-esc="o.km_difference"/></td>
+                                                <td><strong>KM/Liter:</strong> <span t-esc="o.km_per_liter"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><strong>Requested Liters:</strong> <span t-esc="o.requested_liters"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" class="text-center">Request Information</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="50%"><strong>Requested By:</strong> <span t-esc="o.requested_by.name"/></td>
+                                                <td width="50%"><strong>Status:</strong> <span t-esc="o.state"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" class="text-center">Approval Information</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="50%"><strong>Approved By:</strong> <span t-esc="o.approved_by.name or 'Not Approved'"/></td>
+                                                <td width="50%"><strong>Refueled By:</strong> <span t-esc="o.refueled_by.name or 'Not Refueled'"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><strong>Finance Approval:</strong> <span t-esc="o.finance_approval and 'Yes' or 'No'"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3" class="text-center">Signatures</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="33%" class="text-center">
+                                                    <p>Requested By:</p>
+                                                    <p>___________________________</p>
+                                                    <p>Date: <span t-esc="o.create_date.strftime('%Y-%m-%d')"/></p>
+                                                </td>
+                                                <td width="33%" class="text-center">
+                                                    <p>Approved By:</p>
+                                                    <p>___________________________</p>
+                                                    <p>Date: <span t-esc="o.write_date.strftime('%Y-%m-%d')"/></p>
+                                                </td>
+                                                <td width="33%" class="text-center">
+                                                    <p>Refueled By:</p>
+                                                    <p>___________________________</p>
+                                                    <p>Date: <span t-esc="o.write_date.strftime('%Y-%m-%d')"/></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo> 
