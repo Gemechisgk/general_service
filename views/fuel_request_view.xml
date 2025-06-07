@@ -1,96 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record id="view_fuel_request_form" model="ir.ui.view" groups="general_service.group_fuel_request_user,general_service.group_fuel_request_manager">
-            <field name="name">fuel.request.form</field>
-            <field name="model">fuel.request</field>
-            <field name="arch" type="xml">
-                <form string="Fuel Request">
-                    <header>
-                        <button name="action_submit" string="Submit" type="object" class="oe_highlight" 
-                                invisible="state != 'draft'"/>
-                        <button name="action_approve" string="Approve" type="object" class="oe_highlight" 
-                                invisible="state != 'submitted'"/>
-                        <button name="action_refuel" string="Refuel" type="object" class="oe_highlight" 
-                                invisible="state != 'approved'"/>
-                        <button name="action_done" string="Done" type="object" class="oe_highlight" 
-                                invisible="state != 'refueled'"/>
-                        <button name="action_print_report" string="Print" type="object" class="btn-primary"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,refueled,done"/>
-                    </header>
-                    <sheet>
-                        <div class="oe_title">
-                            <h1>
-                                <field name="name" readonly="1"/>
-                            </h1>
-                        </div>
+    <!-- Form View -->
+    <record id="view_fuel_request_form" model="ir.ui.view">
+        <field name="name">fuel.request.form</field>
+        <field name="model">fuel.request</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Fuel Request">
+                <header>
+                    <button name="action_submit" 
+                            string="Submit" 
+                            type="object" 
+                            class="oe_highlight" 
+                            invisible="state != 'draft'"/>
+                    <button name="action_approve" 
+                            string="Approve" 
+                            type="object" 
+                            class="oe_highlight" 
+                            invisible="state != 'submitted'"
+                            groups="general_service.group_fuel_request_manager"/>
+                    <button name="action_refuel" 
+                            string="Refuel" 
+                            type="object" 
+                            class="oe_highlight" 
+                            invisible="state != 'approved'"/>
+                    <button name="action_done" 
+                            string="Done" 
+                            type="object" 
+                            class="oe_highlight" 
+                            invisible="state != 'refueled'"/>
+                    <button name="action_print_report" 
+                            string="Print" 
+                            type="object" 
+                            class="btn-primary"/>
+                    <field name="state" widget="statusbar" 
+                           statusbar_visible="draft,submitted,approved,refueled,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
                         <group>
-                            <group>
-                                <field name="date"/>
-                                <field name="description"/>
-                                <field name="plate_number"/>
-                                <field name="previous_km_reading"/>
-                                <field name="current_km_reading"/>
-                                <field name="km_difference" readonly="1"/>
-                                <field name="km_per_liter"/>
-                                <field name="requested_liters" readonly="1"/>
-                            </group>
-                            <group>
-                                <field name="requested_by" readonly="1"/>
-                                <field name="refueled_by" invisible="state not in ('refueled', 'done')"/>
-                                <field name="approved_by" invisible="state not in ('approved', 'refueled', 'done')"/>
-                                <field name="finance_approval" invisible="state not in ('approved', 'refueled', 'done')"/>
-                            </group>
+                            <field name="date"/>
+                            <field name="description"/>
+                            <field name="plate_number"/>
+                            <field name="previous_km_reading"/>
+                            <field name="current_km_reading"/>
+                            <field name="km_difference" readonly="1"/>
+                            <field name="km_per_liter"/>
+                            <field name="requested_liters" readonly="1"/>
                         </group>
-                    </sheet>
-                    <chatter/>
-                </form>
-            </field>
-        </record>
+                        <group>
+                            <field name="requested_by"/>
+                            <field name="refueled_by" readonly="1" 
+                                   invisible="state not in ('refueled', 'done')"/>
+                            <field name="approved_by" readonly="1" 
+                                   invisible="state not in ('approved', 'refueled', 'done')"/>
+                            <field name="finance_approval" 
+                                   invisible="state not in ('approved', 'refueled', 'done')"
+                                   groups="general_service.group_fuel_request_manager"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
 
-        <record id="view_fuel_request_tree" model="ir.ui.view" groups="general_service.group_fuel_request_user,general_service.group_fuel_request_manager">
-            <field name="name">fuel.request.tree</field>
-            <field name="model">fuel.request</field>
-            <field name="arch" type="xml">
-                <list string="Fuel Requests">
-                    <field name="name"/>
-                    <field name="date"/>
-                    <field name="description"/>
-                    <field name="plate_number"/>
-                    <field name="requested_by"/>
-                    <field name="state"/>
-                </list>
-            </field>
-        </record>
+    <!-- List View -->
+    <record id="view_fuel_request_tree" model="ir.ui.view">
+        <field name="name">fuel.request.tree</field>
+        <field name="model">fuel.request</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list string="Fuel Requests" 
+                  decoration-info="state == 'draft'" 
+                  decoration-warning="state == 'submitted'"
+                  decoration-success="state in ('approved', 'refueled')"
+                  decoration-muted="state == 'done'">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="description"/>
+                <field name="plate_number"/>
+                <field name="requested_by"/>
+                <field name="requested_liters"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
 
-        <record id="view_fuel_request_search" model="ir.ui.view" groups="general_service.group_fuel_request_user,general_service.group_fuel_request_manager">
-            <field name="name">fuel.request.search</field>
-            <field name="model">fuel.request</field>
-            <field name="arch" type="xml">
-                <search string="Fuel Requests">
-                    <field name="name"/>
-                    <field name="description"/>
-                    <field name="plate_number"/>
-                    <field name="requested_by"/>
-                    <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
-                    <filter string="Submitted" name="submitted" domain="[('state', '=', 'submitted')]"/>
-                    <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
-                    <filter string="Refueled" name="refueled" domain="[('state', '=', 'refueled')]"/>
-                    <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
-                </search>
-            </field>
-        </record>
+    <!-- Search View -->
+    <record id="view_fuel_request_search" model="ir.ui.view">
+        <field name="name">fuel.request.search</field>
+        <field name="model">fuel.request</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Fuel Requests">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="plate_number"/>
+                <field name="requested_by"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Submitted" name="submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Refueled" name="refueled" domain="[('state', '=', 'refueled')]"/>
+                <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
+                <separator/>
+                <filter string="My Requests" name="my_requests" 
+                        domain="[('requested_by', '=', uid)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_by_state" 
+                            context="{'group_by': 'state'}"/>
+                    <filter string="Requested By" name="group_by_requested_by" 
+                            context="{'group_by': 'requested_by'}"/>
+                    <filter string="Request Date" name="group_by_date" 
+                            context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
-        <record id="action_fuel_request" model="ir.actions.act_window">
-            <field name="name">Fuel Requests</field>
-            <field name="res_model">fuel.request</field>
-            <field name="view_mode">list,form</field>
-            <field name="groups">general_service.group_fuel_request_user,general_service.group_fuel_request_manager</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent_smiling_face">
-                    Create your first fuel request!
-                </p>
-            </field>
-        </record>
-    </data>
+    <!-- Action -->
+    <record id="action_fuel_request" model="ir.actions.act_window">
+        <field name="name">Fuel Requests</field>
+        <field name="res_model">fuel.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_fuel_request_search"/>
+        <field name="context">{'search_default_my_requests': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first fuel request!
+            </p>
+            <p>
+                Create a fuel request to track and manage vehicle refueling needs.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_fuel_request"
+              name="Fuel Requests"
+              parent="general_service.menu_general_service_root"
+              action="action_fuel_request"
+              sequence="30"
+              groups="general_service.group_fuel_request_user,general_service.group_fuel_request_manager"/>
 </odoo> 

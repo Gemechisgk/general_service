@@ -18,5 +18,21 @@
             <field name="padding">4</field>
             <field name="company_id" eval="False"/>
         </record>
+
+        <record id="seq_employee_registration" model="ir.sequence">
+            <field name="name">Employee Registration Sequence</field>
+            <field name="code">employee.registration.sequence</field>
+            <field name="prefix">EMP/</field>
+            <field name="padding">4</field>
+        </record>
+
+        <!-- Sequence for fuel request -->
+        <record id="seq_fuel_request" model="ir.sequence">
+            <field name="name">Fuel Request Sequence</field>
+            <field name="code">fuel.request.sequence</field>
+            <field name="prefix">FUEL/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
     </data>
 </odoo> 

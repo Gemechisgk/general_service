@@ -6,20 +6,68 @@
         <!--        create category  is the label that show in the settings of the user  -->
         <record id="main_employee_category" model="ir.module.category">
             <field name="name">Employee Access</field>
+            <field name="description">Manage employee access</field>
+            <field name="sequence">10</field>
         </record>
         <!--        create groups-->
         <record id="employee_registration_group" model="res.groups">
             <field name="name">Employee Registration</field>
-            <field name="category_id" ref="general_service.main_employee_category"/>
+            <field name="category_id" ref="main_employee_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
         <!--        record rule show male only-->
         <record id="employee_record_rule_by_user" model="ir.rule">
             <field name="name">employee.by.user</field>
-            <field name="model_id" ref="general_service.model_employee_employee"/>
+            <field name="model_id" ref="model_employee_employee"/>
             <field name="domain_force">[('gender','=','male')]</field>
             <!-- Assign permission to all internal users -->
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Fuel Request Category -->
+        <record id="module_category_fuel_request" model="ir.module.category">
+            <field name="name">Fuel Request</field>
+            <field name="description">Manage fuel requests</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <!-- Fuel Request User Group -->
+        <record id="group_fuel_request_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_category_fuel_request"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Fuel Request Manager Group -->
+        <record id="group_fuel_request_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_fuel_request"/>
+            <field name="implied_ids" eval="[(4, ref('group_fuel_request_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- Fuel Request Rules -->
+        <record id="fuel_request_user_rule" model="ir.rule">
+            <field name="name">Fuel Request User Rule</field>
+            <field name="model_id" ref="model_fuel_request"/>
+            <field name="domain_force">[('requested_by', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_fuel_request_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="fuel_request_manager_rule" model="ir.rule">
+            <field name="name">Fuel Request Manager Rule</field>
+            <field name="model_id" ref="model_fuel_request"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_fuel_request_manager'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>

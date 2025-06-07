@@ -6,3 +6,5 @@ access_property_management,property.management,model_property_management,base.gr
 access_property_ownership_history,property.ownership.history,model_property_ownership_history,base.group_user,1,1,1,1
 access_employee_registration_wizard,employee.registration.wizard,model_employee_registration_wizard,base.group_user,1,1,1,1
 access_hr_employee_cv_wizard,hr.employee.cv.wizard,model_hr_employee_cv_wizard,base.group_user,1,1,1,1
+access_fuel_request_user,fuel.request.user,model_fuel_request,general_service.group_fuel_request_user,1,1,1,0
+access_fuel_request_manager,fuel.request.manager,model_fuel_request,general_service.group_fuel_request_manager,1,1,1,1
