@@ -34,5 +34,13 @@
             <field name="padding">4</field>
             <field name="company_id" eval="False"/>
         </record>
+
+        <record id="seq_material_distribution" model="ir.sequence">
+            <field name="name">Material Distribution</field>
+            <field name="code">material.distribution</field>
+            <field name="prefix">MAT/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
     </data>
 </odoo> 

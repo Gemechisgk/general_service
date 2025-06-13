@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_material_distribution_form" model="ir.ui.view">
+        <field name="name">material.distribution.form</field>
+        <field name="model">material.distribution</field>
+        <field name="arch" type="xml">
+            <form string="Material Distribution">
+                <header>
+                    <button name="action_print_report" string="Print" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="date"/>
+                        <field name="material"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                        <field name="amount"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_material_distribution_tree" model="ir.ui.view">
+        <field name="name">material.distribution.tree</field>
+        <field name="model">material.distribution</field>
+        <field name="arch" type="xml">
+            <list string="Material Distributions">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="material"/>
+                <field name="notes"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_material_distribution_search" model="ir.ui.view">
+        <field name="name">material.distribution.search</field>
+        <field name="model">material.distribution</field>
+        <field name="arch" type="xml">
+            <search string="Material Distributions">
+                <field name="name"/>
+                <field name="material"/>
+                <field name="date"/>
+                <field name="notes"/>
+                <filter string="Today" name="today" domain="[('date', '=', context_today())]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Material" name="group_by_material" context="{'group_by': 'material'}"/>
+                    <filter string="Date" name="group_by_date" context="{'group_by': 'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_material_distribution" model="ir.actions.act_window">
+        <field name="name">Material Distributions</field>
+        <field name="res_model">material.distribution</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_material_distribution_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first material distribution!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_material_distribution_root" name="Material Distribution" parent="menu_general_service_root" sequence="50"/>
+    <menuitem id="menu_material_distribution" name="Distributions" parent="menu_material_distribution_root" action="action_material_distribution" sequence="10"/>
+</odoo> 
