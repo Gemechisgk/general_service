@@ -24,8 +24,6 @@
                         <div class="col-6">
                             <strong>Reference:</strong> <span t-esc="o.name"/><br/>
                             <strong>Date:</strong> <span t-esc="o.date"/><br/>
-                            <strong>Material:</strong> <span t-esc="o.material"/><br/>
-                            <strong>Amount:</strong> <span t-esc="o.amount"/><br/>
                         </div>
                         <div class="col-6">
                             <strong>Notes:</strong> <span t-esc="o.notes"/><br/>
@@ -33,19 +31,29 @@
                     </div>
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h4>Employees who received the material:</h4>
+                            <h4>Material Distribution Table:</h4>
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
                                         <th>Employee</th>
-                                        <th>Amount</th>
+                                        <t t-set="materials" t-value="sorted(list(set([l.material for l in o.line_ids])))"/>
+                                        <t t-foreach="materials" t-as="mat">
+                                            <th><span t-esc="mat"/></th>
+                                        </t>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr t-foreach="o.employee_table" t-as="row">
-                                        <td><span t-esc="row['name']"/></td>
-                                        <td><span t-esc="row['amount']"/></td>
-                                    </tr>
+                                    <t t-foreach="o.employee_ids" t-as="emp">
+                                        <tr>
+                                            <td><span t-esc="emp.name"/></td>
+                                            <t t-foreach="materials" t-as="mat">
+                                                <td>
+                                                    <t t-set="qty" t-value="sum([l.quantity for l in o.line_ids if l.material == mat])"/>
+                                                    <span t-esc="qty if qty else ''"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
                                 </tbody>
                             </table>
                         </div>

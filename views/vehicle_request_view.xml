@@ -9,12 +9,12 @@
                     <button name="action_submit" string="Submit" type="object" class="oe_highlight"
                             invisible="state != 'draft'"/>
                     <button name="action_start_trip" string="Start Trip" type="object" class="oe_highlight"
-                            invisible="state != 'draft'"/>
+                            invisible="state != 'submitted'"/>
                     <button name="action_return" string="Mark as Returned" type="object" class="oe_highlight"
                             invisible="state != 'in_use'"/>
                     <button name="action_print_request" string="Print" type="object" class="btn-primary"/>
                     <field name="state" widget="statusbar" 
-                           statusbar_visible="draft,in_use,returned"/>
+                           statusbar_visible="draft,submitted,in_use,returned"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
@@ -32,19 +32,17 @@
                             <field name="travel_datetime"/>
                             <field name="destination"/>
                             <field name="purpose"/>
-                            <field name="odometer_start"/>
-                            <field name="odometer_end"/>
-                            <field name="distance_traveled"/>
+                            <field name="odometer_start" invisible="state == 'draft'"/>
+                            <field name="odometer_end" invisible="not (state == 'in_use' or state == 'returned')" readonly="state == 'returned'"/>
+                            <field name="distance_traveled" invisible="state != 'returned'"/>
                         </group>
                     </group>
-                    <group>
-                        <group string="Vehicle Assignment">
-                            <field name="vehicle_id"/>
-                            <field name="driver_id"/>
-                            <field name="plate_number"/>
-                            <field name="expected_return_datetime"/>
-                            <field name="actual_return_datetime"/>
-                        </group>
+                    <group string="Vehicle Assignment" invisible="state == 'draft'">
+                        <field name="vehicle_id"/>
+                        <field name="driver_id"/>
+                        <field name="plate_number"/>
+                        <field name="expected_return_datetime"/>
+                        <field name="actual_return_datetime"/>
                     </group>
                     <notebook>
                         <page string="Notes">
@@ -52,11 +50,7 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -66,6 +60,7 @@
         <field name="model">vehicle.request</field>
         <field name="arch" type="xml">
             <list string="Vehicle Travel Requests" decoration-info="state == 'draft'" 
+                  decoration-success="state == 'submitted'"
                   decoration-primary="state == 'in_use'"
                   decoration-muted="state == 'returned'">
                 <field name="name"/>
@@ -93,6 +88,7 @@
                 <field name="driver_id"/>
                 <field name="state"/>
                 <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Submitted" name="submitted" domain="[('state', '=', 'submitted')]"/>
                 <filter string="In Use" name="in_use" domain="[('state', '=', 'in_use')]"/>
                 <filter string="Returned" name="returned" domain="[('state', '=', 'returned')]"/>
                 <group expand="0" string="Group By">

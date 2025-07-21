@@ -25,6 +25,7 @@
                             <field name="acquisition_date"/>
                             <field name="current_value"/>
                             <field name="company_id"/>
+                            <field name="assigned_to"/>
                         </group>
                         <group>
                             <field name="barcode" readonly="1"/>
@@ -87,4 +88,4 @@
     <menuitem id="menu_property_management" name="Properties" parent="menu_property_root" 
               action="action_property_management" sequence="10"/>
               
-</odoo> 
+</odoo>

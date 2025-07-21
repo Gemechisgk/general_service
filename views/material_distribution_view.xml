@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Form View -->
+    <!-- Update form view to use the inline tree for line_ids -->
     <record id="view_material_distribution_form" model="ir.ui.view">
         <field name="name">material.distribution.form</field>
         <field name="model">material.distribution</field>
@@ -17,10 +17,17 @@
                     </div>
                     <group>
                         <field name="date"/>
-                        <field name="material"/>
                         <field name="employee_ids" widget="many2many_tags"/>
-                        <field name="amount"/>
                         <field name="notes"/>
+                    </group>
+                    <group string="Materials">
+                        <field name="line_ids">
+                            <list editable="bottom">
+                                <field name="material"/>
+                                <field name="quantity"/>
+                                <field name="notes"/>
+                            </list>
+                        </field>
                     </group>
                 </sheet>
                 <chatter/>
@@ -36,7 +43,6 @@
             <list string="Material Distributions">
                 <field name="name"/>
                 <field name="date"/>
-                <field name="material"/>
                 <field name="notes"/>
             </list>
         </field>
@@ -49,12 +55,10 @@
         <field name="arch" type="xml">
             <search string="Material Distributions">
                 <field name="name"/>
-                <field name="material"/>
                 <field name="date"/>
                 <field name="notes"/>
                 <filter string="Today" name="today" domain="[('date', '=', context_today())]"/>
                 <group expand="0" string="Group By">
-                    <filter string="Material" name="group_by_material" context="{'group_by': 'material'}"/>
                     <filter string="Date" name="group_by_date" context="{'group_by': 'date'}"/>
                 </group>
             </search>

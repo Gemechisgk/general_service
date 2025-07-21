@@ -34,6 +34,7 @@ class PropertyManagement(models.Model):
         ('active', 'Active'),
         ('inactive', 'Inactive')
     ], string='Status', default='draft', tracking=True)
+    assigned_to = fields.Many2one('hr.employee', string='Assigned To', required=False)
 
     @api.depends('property_id')
     def _compute_barcode(self):
@@ -69,4 +70,5 @@ class PropertyOwnershipHistory(models.Model):
     transfer_date = fields.Date(string='Transfer Date', required=True)
     transfer_document = fields.Binary(string='Transfer Document')
     transfer_document_name = fields.Char(string='Document Name')
-    notes = fields.Text(string='Notes') 
+    notes = fields.Text(string='Notes')
+    employee_id = fields.Many2one('hr.employee', string='Related Employee')

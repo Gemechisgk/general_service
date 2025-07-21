@@ -8,6 +8,7 @@
                 <field name="property_id" invisible="0"/>
                 <field name="transfer_date"/>
                 <field name="transfer_document" filename="transfer_document_name"/>
+                <field name="employee_id"/>
                 <field name="notes"/>
             </list>
         </field>
@@ -23,6 +24,7 @@
                         <field name="property_id"/>
                         <field name="transfer_date"/>
                         <field name="transfer_document" filename="transfer_document_name"/>
+                        <field name="employee_id"/>
                         <field name="notes"/>
                     </group>
                 </sheet>
@@ -55,4 +57,4 @@
     <!-- Menu Structure -->
     <menuitem id="menu_property_ownership_history" name="Ownership History" parent="menu_property_root" 
               action="action_property_ownership_history" sequence="20"/>
-</odoo> 
+</odoo>

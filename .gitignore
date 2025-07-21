@@ -6,3 +6,4 @@ __pycache__/
 # VS Code
 .vscode/
 *.code-workspace 
+models/__pycache__/property_management.cpython-312.pyc

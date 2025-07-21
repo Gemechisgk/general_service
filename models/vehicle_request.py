@@ -38,6 +38,7 @@ class VehicleRequest(models.Model):
     
     state = fields.Selection([
         ('draft', 'Draft'),
+        ('submitted', 'Submitted'),
         ('in_use', 'In Use'),
         ('returned', 'Returned')
     ], string='Status', default='draft', tracking=True)
@@ -71,8 +72,14 @@ class VehicleRequest(models.Model):
         if self.vehicle_id:
             self.odometer_start = self.vehicle_id.odometer
 
+    @api.constrains('odometer_start', 'odometer_end')
+    def _check_odometer_values(self):
+        for record in self:
+            if record.odometer_end and record.odometer_start and record.odometer_end < record.odometer_start:
+                raise ValidationError(_('Odometer Reading Return must be greater than or equal to Odometer Reading Start.'))
+
     def action_submit(self):
-        self.write({'state': 'in_use'})
+        self.write({'state': 'submitted'})
 
     def action_start_trip(self):
         if not self.odometer_start:
