@@ -7,3 +7,6 @@ __pycache__/
 .vscode/
 *.code-workspace 
 models/__pycache__/property_management.cpython-312.pyc
+models/__pycache__/hr_employee.cpython-312.pyc
+controllers/__pycache__/controllers.cpython-312.pyc
+models/__pycache__/__init__.cpython-312.pyc

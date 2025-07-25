@@ -14,3 +14,5 @@ access_airplane_ticket_user,airplane.ticket.user,model_airplane_ticket,base.grou
 access_airplane_ticket_manager,airplane.ticket.manager,model_airplane_ticket,base.group_system,1,1,1,1
 access_vehicle_request_user,vehicle.request.user,model_vehicle_request,base.group_user,1,1,1,0
 access_vehicle_request_manager,vehicle.request.manager,model_vehicle_request,base.group_system,1,1,1,1
+access_hr_job_user,hr.job user,hr.model_hr_job,base.group_user,1,0,0,0
+access_hr_skill_user,hr.skills user,hr_skills.model_hr_skill,base.group_user,1,0,0,0

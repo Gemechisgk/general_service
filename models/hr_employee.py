@@ -5,7 +5,8 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
     employment_duration = fields.Char(string='Duration of Employment', compute='_compute_employment_duration', store=True)
-
+    barcode = fields.Char(groups='base.group_user')
+    
     @api.depends('create_date')
     def _compute_employment_duration(self):
         for employee in self:
